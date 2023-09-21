@@ -78,4 +78,10 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  ::selection {
+    background: #A9C8C0;
+    color: #fff;
+    -webkit-background-clip: none;
+    -webkit-text-fill-color: #fff;
+  }
 }

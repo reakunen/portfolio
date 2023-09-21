@@ -57,6 +57,9 @@ module.exports = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       keyframes: {
+          shine: {
+            "100%": { left: "125%" },
+          },
         "accordion-down": {
           from: { height: 0 },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -67,6 +70,8 @@ module.exports = {
         },
       },
       animation: {
+        shine: "shine 1s",
+
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },

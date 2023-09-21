@@ -1,39 +1,27 @@
+import React from "react"
 import Link from "next/link"
-
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-
-export default function IndexPage() {
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
+import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react"
+import { Button } from "@/components/ui/button"
+export default function Page() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          Beautifully designed components <br className="hidden sm:inline" />
-          built with Radix UI and Tailwind CSS.
-        </h1>
-        <p className="max-w-[700px] text-lg text-muted-foreground">
-          Accessible and customizable components that you can copy and paste
-          into your apps. Free. Open Source. And Next.js 13 Ready.
-        </p>
+    <div className="flex justify-center items-center">
+      <div className="flex flex-col items-center gap-2">
+        <img
+          className="rounded-full h-28 w-28"
+          src="https://media.discordapp.net/attachments/760653808505847831/1153961993896734763/image.png?width=1370&height=1227"
+          alt=""
+        />
+        <h1>Brian Mai</h1>
+        <h1>Hey I'm Brian I am a computer science student at Cal Poly SLO </h1>
+        <h1>Let's get in touch!</h1>
+        <div className="flex gap-3 child:pointer">
+          <GithubIcon />
+          <LinkedinIcon />
+          <MailIcon />
+        </div>
+        <Button>Contact</Button>
       </div>
-      <div className="flex gap-4">
-        <Link
-          href={siteConfig.links.docs}
-          target="_blank"
-          rel="noreferrer"
-          className={buttonVariants()}
-        >
-          Documentation
-        </Link>
-        <Link
-          target="_blank"
-          rel="noreferrer"
-          href={siteConfig.links.github}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          GitHub
-        </Link>
-      </div>
-    </section>
+    </div>
   )
 }
