@@ -49,14 +49,12 @@ export function Footer() {
       /> */}
       <RedirectItem
         href="https://github.com/reakunen"
-        target="_blank"
         // icon={<FolderArchiveIcon className="h-5 w-5 text-gray-400" />}
         icon={<FolderOpenIcon className="h-5 w-5 text-gray-400" />}
         title={"Projects"}
       />
       <RedirectItem
         href="/resume.pdf"
-        target="_blank"
         icon={<ClipboardList className="h-5 w-5 text-gray-400" />}
         title={"Resume"}
       />

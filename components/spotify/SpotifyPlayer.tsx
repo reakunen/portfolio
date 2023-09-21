@@ -7,21 +7,29 @@ import { getNowPlayingItem, getTopTracks } from "./SpotifyAPI"
 import { SpotifyLogo } from "./SpotifyLogo"
 
 export default function SpotifyPlayer() {
-  const [nowPlayingItem, setNowPlayingItem] = useState(null)
+  const [nowPlayingItem, setNowPlayingItem] = useState<{
+    albumImageUrl: string
+    artist: string
+    isPlaying: boolean
+    songUrl: string
+    title: string
+  } | null>(null) // Initialize with null
   const [loading, setLoading] = useState(true)
   const fetchData = () => {
-    getNowPlayingItem(
-      process.env.NEXT_PUBLIC_CLIENT_ID,
-      process.env.NEXT_PUBLIC_CLIENT_SECRET,
-      process.env.NEXT_PUBLIC_REFRESH_TOKEN
-    )
+    const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || ""
+    const clientSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET || ""
+    const refreshToken = process.env.NEXT_PUBLIC_REFRESH_TOKEN || ""
+    getNowPlayingItem(clientId, clientSecret, refreshToken)
       .then((result) => {
-        setNowPlayingItem(result)
+        setNowPlayingItem(result || null) // Use null when result is false
       })
       .catch((error) => {
         // Handle errors here
         console.error(error)
-        setLoading(false) // Set loading to false on error as well
+        // Handle errors here
+        console.error(error)
+        setNowPlayingItem(null) // Set to null on error
+        setLoading(false)
       })
   }
 

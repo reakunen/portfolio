@@ -1,49 +1,55 @@
-"use client"
+// "use client"
+// import React, { useEffect, useState } from "react";
+// import { getTopTracks } from "@/components/spotify/SpotifyAPI";
 
-import React, { useEffect, useState } from "react"
+// export default function AboutPage() {
+//   // Specify the type for topTracks
+//   const [topTracks, setTopTracks] = useState<Array<any>>([]);
 
-import { getTopTracks } from "@/components/spotify/SpotifyAPI"
+//   useEffect(() => {
+//     // Fetch top tracks when the component mounts
+//     getTopTracks()
+//       .then((tracks) => {
+//         setTopTracks(tracks);
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching top tracks:", error);
+//       });
+//   }, []);
 
-export default function AboutPage() {
-  const [topTracks, setTopTracks] = useState([])
+//   return (
+//     <div>
+//       <h2>Top Tracks</h2>
+//       <ul>
+//         {topTracks.map((track, id) => (
+//           <li key={track.id}>
+//             <h1>{id}</h1>
+//             <p>Title: {track.name}</p>
+//             <img
+//               src={track.album.images[0].url}
+//               alt={`Cover art for ${track.name}`}
+//             />
+//             <p>
+//               Artist(s): {track.artists.map((artist) => artist.name).join(", ")}
+//             </p>
+//             <p>Album: {track.album.name}</p>
+//             <p>Popularity: {track.popularity}</p>
+//             <p>
+//               Listen on Spotify:{" "}
+//               <a href={track.external_urls.spotify}>Open Link</a>
+//             </p>
+//             <hr />
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
 
-  useEffect(() => {
-    // Fetch top tracks when the component mounts
-    getTopTracks()
-      .then((tracks) => {
-        setTopTracks(tracks)
-      })
-      .catch((error) => {
-        console.error("Error fetching top tracks:", error)
-      })
-  }, [])
+import React from 'react'
 
+export default function page() {
   return (
-    <div>
-      <h2>Top Tracks</h2>
-      <ul>
-        {topTracks.map((track, id) => (
-          <li key={track.id}>
-            <h1>{id}</h1>
-            <p>Title: {track.name}</p>
-            <img
-              src={track.album.images[0].url}
-              alt={`Cover art for ${track.name}`}
-            />
-
-            <p>
-              Artist(s): {track.artists.map((artist) => artist.name).join(", ")}
-            </p>
-            <p>Album: {track.album.name}</p>
-            <p>Popularity: {track.popularity}</p>
-            <p>
-              Listen on Spotify:{" "}
-              <a href={track.external_urls.spotify}>Open Link</a>
-            </p>
-            <hr />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <div>page</div>
   )
 }

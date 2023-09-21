@@ -1,56 +1,62 @@
-"use client"
+"use client" 
+import React, { useEffect, useState } from "react";
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
+import { db } from "@/config/firebase";
+import Form from "./Form";
+import Guestcard from "./Guestcard";
 
-import React, { useEffect, useState } from "react"
-import { collection, getDocs, limit, orderBy, query } from "firebase/firestore"
-
-import { db } from "@/config/firebase"
-
-import Form from "./Form"
-import Guestcard from "./Guestcard"
-
-// Assuming you have your Firebase configuration set up in this file.
+// Define an interface for the message data
+interface Message {
+  id?: string; // Make the 'id' property optional
+  content: string;
+  date: Date;
+  name: string;
+  photo: string;
+}
 
 export default function GuestbookPage() {
-  const [messages, setMessages] = useState([])
+  // Specify the initial state as an empty array of Message objects
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     async function fetchMessages() {
       try {
-        const messagesCollectionRef = collection(db, "guestbook")
+        const messagesCollectionRef = collection(db, "guestbook");
 
         const q = query(
           messagesCollectionRef,
-          orderBy("date", "asc"), // "asc" for ascending order, or "desc" for descending order
+          orderBy("date", "asc"),
           limit(25)
-        )
+        );
 
-        const data = await getDocs(q)
+        const data = await getDocs(q);
 
-        const messagesData = data.docs.map((doc) => ({
-          ...doc.data(),
+        const messagesData: any[] = data.docs.map((doc) => ({
           id: doc.id,
-        }))
+          ...doc.data(),
+        }));
 
-        setMessages(messagesData)
+        // Set the messages using the correct type
+        setMessages(messagesData);
       } catch (error) {
-        console.error("Error fetching data:", error)
+        console.error("Error fetching data:", error);
       }
     }
 
-    fetchMessages()
-  }, [])
+    fetchMessages();
+  }, []);
 
   return (
     <>
       <h1>Sign your name here!</h1>
       <Form />
       <ul>
-        {messages.map((message) => (
-          <li key={message}>
+        {messages.map((message, id) => (
+          <li key={id}>
             <Guestcard message={message} />
           </li>
         ))}
       </ul>
     </>
-  )
+  );
 }

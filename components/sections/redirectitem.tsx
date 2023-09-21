@@ -2,7 +2,13 @@ import { ReactNode } from "react"
 
 import Tooltip from "./tooltip-provider"
 
-export default function RedirectItem({ href, title, icon }) {
+interface RedirectItemProps {
+  href: string
+  title: string
+  icon: JSX.Element
+}
+
+export default function RedirectItem({ href, title, icon }: RedirectItemProps) {
   return (
     <Tooltip title={title}>
       <a

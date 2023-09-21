@@ -4,6 +4,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-}
+  images: {
+    domains: ['media.discordapp.net'],
+  },
+};
 
-export default nextConfig
+export default nextConfig;

@@ -2,7 +2,13 @@ import Link from "next/link"
 
 import Tooltip from "./tooltip-provider"
 
-export default function NavItem({ href, title, icon }) {
+interface NavItemProps {
+  href: string
+  title: string
+  icon: JSX.Element
+}
+
+export default function NavItem({ href, title, icon }: NavItemProps) {
   return (
     <Tooltip title={title}>
       <div>
