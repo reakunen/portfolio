@@ -58,11 +58,11 @@ export function Footer() {
         icon={<ClipboardList className="h-5 w-5 text-gray-400" />}
         title={"Resume"}
       />
-      <NavItem
+      {/* <NavItem
         href="/Contact"
         icon={<ContactIcon className="h-5 w-5 text-gray-400" />}
         title={"Contact"}
-      />
+      /> */}
     </footer>
   )
 }

@@ -29,7 +29,7 @@ export default function Page() {
           height={140}
         />
         <h1 className="font-bold text-3xl">Brian Mai</h1>
-        <h1>
+        <h1 className='mt-5'>
           Hey, I&apos;m Brian. I am a computer science student at Cal Poly SLO.
         </h1>
         <h1>Let&apos;s get in touch!</h1>
