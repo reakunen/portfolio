@@ -14,7 +14,7 @@ interface APIProps {
 }
 
 const getAccessToken = async () => {
-  console.log({ client_id, client_secret, refresh_token });
+  // console.log({ client_id, client_secret, refresh_token });
   const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
 
   const response = await fetch(TOKEN_ENDPOINT, {

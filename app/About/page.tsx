@@ -48,8 +48,11 @@
 
 import React from 'react'
 
-export default function page() {
+export default function AboutPage() {
   return (
-    <div>page</div>
+    <div>
+      <h1>About Me</h1>
+      <p>Just a quick glimpse. </p>
+    </div>
   )
 }

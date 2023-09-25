@@ -1,7 +1,9 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
+import { motion, useAnimation } from "framer-motion"
 
+import "@/styles/spotify.css"
 import PlayingAnimation from "./PlayingAnimation"
 import { getNowPlayingItem, getTopTracks } from "./SpotifyAPI"
 import { SpotifyLogo } from "./SpotifyLogo"
@@ -13,81 +15,85 @@ export default function SpotifyPlayer() {
     isPlaying: boolean
     songUrl: string
     title: string
-  } | null>(null) // Initialize with null
-  const [loading, setLoading] = useState(true)
+  } | null>(null)
+
   const fetchData = () => {
     const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || ""
     const clientSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET || ""
     const refreshToken = process.env.NEXT_PUBLIC_REFRESH_TOKEN || ""
     getNowPlayingItem(clientId, clientSecret, refreshToken)
       .then((result) => {
-        setNowPlayingItem(result || null) // Use null when result is false
+        setNowPlayingItem(result || null)
       })
       .catch((error) => {
-        // Handle errors here
         console.error(error)
-        // Handle errors here
-        console.error(error)
-        setNowPlayingItem(null) // Set to null on error
-        setLoading(false)
+        setNowPlayingItem(null)
       })
   }
 
   useEffect(() => {
-    // Fetch data initially
     fetchData()
 
-    setLoading(false) // Set loading to true when fetching data
-
-    // Set up an interval to fetch data every 10 seconds
     const intervalId = setInterval(fetchData, 2000)
 
-    // Clean up the interval when the component unmounts
     return () => {
       clearInterval(intervalId)
     }
   }, [])
 
+  const playerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  }
+
   return (
-    <>
-      {loading ? (
-        // Render a loading indicator while fetching data
-        <div className="text-xs">Loading...</div>
-      ) : nowPlayingItem ? (
-        <div className="flex flex-col">
-          <div className="flex gap-2 mb-1">
+    <motion.div
+      className="flex flex-col w-240 shrink-0"
+      initial="hidden"
+      animate="visible"
+      variants={playerVariants}
+    >
+      {nowPlayingItem ? (
+        <div className="flex gap-2 mb-1">
+          <motion.div variants={playerVariants} className="spotify-logo">
             <SpotifyLogo />
-            <div className="text-xs flex gap-2">
-              Now Playing <PlayingAnimation />
-            </div>
-          </div>
-          <div className="container outline outline-gray-300 dark:outline-gray-500 rounded-sm  flex items-center p-2 gap-2 ">
-            <img
-              className="h-10 w-10 rounded-sm"
-              src={nowPlayingItem.albumImageUrl}
-              alt="Album Cover"
-            />
-            <div className="text-xs">
-              <a className="font-medium" href={nowPlayingItem.songUrl}>
-                <h1 className="font-medium hover:underline">
-                  {nowPlayingItem.title.length > 20 // Adjust the length threshold as needed
-                    ? nowPlayingItem.title.slice(0, 20) + "..." // Truncate long titles
-                    : nowPlayingItem.title}{" "}
-                </h1>
-              </a>
-              <p className="text-gray-500">
-                {" "}
-                {nowPlayingItem.artist.length > 20 // Adjust the length threshold as needed
-                  ? nowPlayingItem.artist.slice(0, 20) + "..." // Truncate long titles
-                  : nowPlayingItem.artist}{" "}
-              </p>
-            </div>
-          </div>
+          </motion.div>
+          <motion.div variants={playerVariants} className="text-xs flex gap-2">
+            <span className="font-medium">Now Playing</span>
+            <PlayingAnimation />
+          </motion.div>
         </div>
+      ) : null}
+      {nowPlayingItem ? (
+        <motion.div
+          className="container outline outline-gray-300 dark:outline-gray-500 rounded-sm  flex items-center p-2 gap-2 "
+          variants={playerVariants}
+        >
+          <img
+            className="h-10 w-10 rounded-sm"
+            src={nowPlayingItem.albumImageUrl}
+            alt="Album Cover"
+          />
+          <div className="text-xs">
+            <a className="font-medium" href={nowPlayingItem.songUrl}>
+              <h1 className="font-medium hover:underline">
+                {nowPlayingItem.title.length > 20
+                  ? nowPlayingItem.title.slice(0, 20) + "..."
+                  : nowPlayingItem.title}
+              </h1>
+            </a>
+            <p className="text-gray-500">
+              {nowPlayingItem.artist.length > 20
+                ? nowPlayingItem.artist.slice(0, 20) + "..."
+                : nowPlayingItem.artist}
+            </p>
+          </div>
+        </motion.div>
       ) : (
-        // Render the SpotifyLogo component when there is no data
-        <SpotifyLogo />
+        <motion.div variants={playerVariants}>
+          <SpotifyLogo width="30px" height="30px" />
+        </motion.div>
       )}
-    </>
+    </motion.div>
   )
 }

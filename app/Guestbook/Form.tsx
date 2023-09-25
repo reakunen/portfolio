@@ -1,25 +1,30 @@
 "use client"
-import React, { useState } from "react";
-import { auth, db, provider } from "@/config/firebase";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import {
-  UserCredential,
-  signInWithPopup,
-  signOut,
-  User,
-} from "firebase/auth";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import React, { useState } from "react"
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
+import { User, UserCredential, signInWithPopup, signOut } from "firebase/auth"
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  getDocs,
+  serverTimestamp,
+} from "firebase/firestore"
+
+import { auth, db, provider } from "@/config/firebase"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 export default function Form() {
-  const [formValue, setFormValue] = useState("");
-  const [user, setUser] = useState<User | null>(null); // Specify the type as User | null
+  const [formValue, setFormValue] = useState("")
+  const [user, setUser] = useState<User | null>(null)
 
   const sendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!user) return;
+    if (formValue.length === 0) {
+      return
+    }
+    e.preventDefault()
+    if (!user) return
 
     try {
       const docRef = await addDoc(collection(db, "guestbook"), {
@@ -27,62 +32,94 @@ export default function Form() {
         content: formValue,
         date: serverTimestamp(),
         photo: user.photoURL,
-      });
+      })
 
-      console.log("Document written with ID: ", docRef.id);
-      setFormValue("");
+      console.log("Document written with ID: ", docRef.id)
+      setFormValue("")
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error("Error adding document: ", error)
     }
-  };
+  }
 
   const handleLogin = async () => {
     try {
-      const res = await signInWithPopup(auth, provider);
-      setUser(res.user);
+      const res = await signInWithPopup(auth, provider)
+      setUser(res.user)
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
-  };
+  }
 
   const handleLogout = async () => {
     try {
-      await signOut(auth); // Sign out the user
-      setUser(null); // Clear the user state
+      await signOut(auth)
+      setUser(null)
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
-  };
+  }
+
+  const handleDeleteAllData = async () => {
+    try {
+      if (!user) return // Check if user is authenticated
+
+      // Check if the user has permission to delete data (you may implement more specific checks)
+      if (user.uid === "ypiSFQV8EcQYEPo2fKJoQ1YQtWi1") {
+        // Query all documents in the "guestbook" collection
+        const querySnapshot = await getDocs(collection(db, "guestbook"))
+
+        // Delete each document
+        querySnapshot.forEach(async (doc) => {
+          await deleteDoc(doc.ref)
+        })
+
+        console.log("All data deleted successfully.")
+      } else {
+        console.error("User does not have permission to delete data.")
+      }
+    } catch (error) {
+      console.error("Error deleting data: ", error)
+    }
+  }
 
   return (
     <div>
       {!user ? (
         <Button
-          className="dark:bg-zinc-900"
+          className="dark:bg-zinc-900 m-2"
           variant="outline"
           onClick={handleLogin}
         >
           <GitHubLogoIcon className="w-5 h-5" />
-          <span className="flex-nowrap text-xs ml-2">Log in with GitHub </span>
+          <span className="flex-nowrap text-xs ml-2">Log in with GitHub</span>
         </Button>
       ) : (
         <>
-          <div className="flex gap-1">
+          <div className="flex gap-1 ">
             <Input
               type="text"
               placeholder="Your message..."
               value={formValue}
               onChange={(e) => setFormValue(e.target.value)}
+              className='' // Adjust the values as needed
             />
+
             <Button variant="ghost" className="" onClick={sendMessage}>
               Sign
             </Button>
           </div>
-          <div className="text-xs" onClick={handleLogout}>
+          <button className="text-xs" onClick={handleLogout}>
             Sign Out
-          </div>
+          </button>
+          {/* <Button
+          className='text-xs m-1'
+            variant="destructive"
+            onClick={handleDeleteAllData}
+          >
+            Delete All Data
+          </Button> */}
         </>
       )}
     </div>
-  );
+  )
 }

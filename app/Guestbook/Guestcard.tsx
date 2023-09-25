@@ -13,7 +13,7 @@ interface GuestcardProps {
 
 export default function Guestcard({ message }: GuestcardProps) {
   return (
-    <div className="p-2 text-xs flex gap-2 items-center">
+    <div className="p-2 text-sm flex gap-2 items-center">
       <img src={message.photo} className="rounded-full w-5" alt="" />
       <div className="flex gap-1">
         <p className="dark:text-gray-400 text-gray-900">{message.name}:</p>
