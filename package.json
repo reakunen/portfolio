@@ -33,7 +33,6 @@
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-geocode": "^1.0.0-alpha.1",
-    "react-particles": "^2.12.2",
     "react-tsparticles": "^2.12.2",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
