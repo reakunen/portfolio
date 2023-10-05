@@ -1,11 +1,13 @@
 import React from "react";
 
 interface MessageInterface {
+  id: string;
   content: string;
   date: Date;
   name: string;
   photo: string;
 }
+
 
 interface GuestcardProps {
   message: MessageInterface;

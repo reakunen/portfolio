@@ -42,9 +42,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col m-2">
+            <div className="relative flex flex-col p-4">
               <SiteHeader />
-              <div className="flex-1">
+              <div className="flex-1 mt-6">
                 {children}
                 <div className="flex fixed bottom-8 justify-center">
                   <Footer />

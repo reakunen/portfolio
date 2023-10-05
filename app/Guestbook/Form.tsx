@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
-import { User, UserCredential, signInWithPopup, signOut } from "firebase/auth"
+import { User, signInWithPopup, signOut } from "firebase/auth"
 import {
   addDoc,
   collection,
@@ -94,31 +94,20 @@ export default function Form() {
           <span className="flex-nowrap text-xs ml-2">Log in with GitHub</span>
         </Button>
       ) : (
-        <>
-          <div className="flex gap-1 ">
+        <div className="w-screen flex justify-center flex-col mb-2 mt-2">
+          <div className="w-screenflex flex justify-center gap-2">
             <Input
               type="text"
               placeholder="Your message..."
               value={formValue}
               onChange={(e) => setFormValue(e.target.value)}
-              className='' // Adjust the values as needed
+              className="max-w-xs" // Make the input full width
             />
-
-            <Button variant="ghost" className="" onClick={sendMessage}>
+            <Button variant="outline" className="" onClick={sendMessage}>
               Sign
             </Button>
           </div>
-          <button className="text-xs" onClick={handleLogout}>
-            Sign Out
-          </button>
-          {/* <Button
-          className='text-xs m-1'
-            variant="destructive"
-            onClick={handleDeleteAllData}
-          >
-            Delete All Data
-          </Button> */}
-        </>
+        </div>
       )}
     </div>
   )

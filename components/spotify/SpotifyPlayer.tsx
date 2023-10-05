@@ -55,7 +55,7 @@ export default function SpotifyPlayer() {
     >
       {nowPlayingItem ? (
         <div className="flex gap-2 mb-1">
-          <motion.div variants={playerVariants} className="spotify-logo">
+          <motion.div variants={playerVariants} className="spotify-logo mb-1">
             <SpotifyLogo />
           </motion.div>
           <motion.div variants={playerVariants} className="text-xs flex gap-2">
@@ -90,9 +90,11 @@ export default function SpotifyPlayer() {
           </div>
         </motion.div>
       ) : (
-        <motion.div variants={playerVariants}>
-          <SpotifyLogo width="30px" height="30px" />
-        </motion.div>
+        <div className='mb-8'>
+          <motion.div variants={playerVariants}>
+            <SpotifyLogo width="30px" height="30px" />
+          </motion.div>
+        </div>
       )}
     </motion.div>
   )

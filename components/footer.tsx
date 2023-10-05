@@ -3,6 +3,7 @@ import {
   BookOpenCheckIcon,
   ClipboardList,
   ContactIcon,
+  FolderArchiveIcon,
   FolderOpenIcon,
   HomeIcon,
   LinkedinIcon,
@@ -47,9 +48,14 @@ export function Footer() {
         icon={<LinkedinIcon className="h-5 w-5 text-gray-400" />}
         title={"LinkedIn"}
       /> */}
-      <RedirectItem
+      {/* <RedirectItem
         href="https://github.com/reakunen"
         // icon={<FolderArchiveIcon className="h-5 w-5 text-gray-400" />}
+        icon={<FolderOpenIcon className="h-5 w-5 text-gray-400" />}
+        title={"Projects"}
+      /> */}
+      <NavItem
+        href="/Projects"
         icon={<FolderOpenIcon className="h-5 w-5 text-gray-400" />}
         title={"Projects"}
       />
@@ -58,11 +64,6 @@ export function Footer() {
         icon={<ClipboardList className="h-5 w-5 text-gray-400" />}
         title={"Resume"}
       />
-      {/* <NavItem
-        href="/Contact"
-        icon={<ContactIcon className="h-5 w-5 text-gray-400" />}
-        title={"Contact"}
-      /> */}
     </footer>
   )
 }

@@ -1,15 +1,38 @@
 import React from "react"
+import Link from "next/link"
 
-// export function formatDate(dateString: string) {
-//   const options = { year: "numeric", month: "long", day: "numeric" }
-//   const date = new Date(dateString)
-//   return date.toDateString("en-US", options)
-// }
+import { getSortedPostsData } from "@/lib/posts"
+import Date from "@/components/date"
+
+type AllPostsData = {
+  date: string
+  title: string
+  id: string
+  author: string
+}[]
+
 export default function BlogPage() {
+  const allPostsData: AllPostsData = getSortedPostsData()
+
   return (
-    <div>
-      <h1>Check out my blogs!</h1>
-      
+    <div className="flex justify-center items-center flex-col">
+      <h1 className="text-4xl font-bold">Blog Posts 🤓</h1>
+      <section className="mt-6">
+        <ul>
+          {allPostsData.map(({ id, date, title, author }) => (
+            <li key={id}>
+              <div className="font-medium mb-1 mt-5 dark:text-blue-400 text-blue-600 hover:underline">
+                <Link href={`/Blog/${id}`}>{title}</Link>
+              </div>
+              <div className="flex gap-3">
+                <div>
+                  <Date dateString={date} />
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   )
 }
