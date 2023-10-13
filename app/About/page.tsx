@@ -18,7 +18,7 @@ export default function Page() {
           About Me
         </h1>
         <img
-          // src="https://media.discordapp.net/attachments/902700750419947602/1162497763657916487/IMG_5360.jpg?ex=653c2769&is=6529b269&hm=5592364d3dcca799ec2d5e6991d9cbaca3289f1b58f69159204d84907944a709&=&width=919&height=1225"
+          src="https://media.discordapp.net/attachments/902700750419947602/1162497763657916487/IMG_5360.jpg?ex=653c2769&is=6529b269&hm=5592364d3dcca799ec2d5e6991d9cbaca3289f1b58f69159204d84907944a709&=&width=919&height=1225"
           alt="Brian Mai"
           height="275"
           width="275"
