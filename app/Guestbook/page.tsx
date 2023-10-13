@@ -23,7 +23,7 @@ export default function GuestbookPage() {
   const messagesCollectionRef = collection(db, "guestbook")
 
   // Define the query
-  const q = query(messagesCollectionRef, orderBy("date"), limit(50))
+  const q = query(messagesCollectionRef, orderBy("date", "desc"), limit(50))
 
   // Use the useCollection hook to fetch data
   const [messagesSnapshot, loading, error] = useCollection(q)
@@ -45,17 +45,21 @@ export default function GuestbookPage() {
     <div className="flex flex-col items-center justify-center">
       <h1 className="text-center font-bold text-4xl">Guestbook 📖</h1>
       <Form />
+      <hr className="block px-28 opacity-1 m-2"></hr>
       {error && <p>Error fetching data: {error.message}</p>}
       {loading ? (
         <Loader />
       ) : (
-        <ul>
-          {messages.map((message) => (
-            <li key={message.id}>
-              <Guestcard message={message} />
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul>
+            {messages.map((message) => (
+              <li key={message.id}>
+                <Guestcard message={message} />
+              </li>
+            ))}
+          </ul>
+          <hr className="block px-24 p-10 mt-2 opacity-0"></hr>
+        </>
       )}
     </div>
   )

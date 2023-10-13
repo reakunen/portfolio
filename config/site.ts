@@ -1,8 +1,7 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Brian Mai Portfolio",
+  name: "Brian's Portfolio",
   description:
-    "Brian's little corner of the internet! ",
-
+    "Brian's corner of the internet!",
 }

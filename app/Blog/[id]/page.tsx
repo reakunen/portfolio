@@ -1,8 +1,10 @@
+import Head from "next/head"
 import Link from "next/link"
 
 import { getAllPostIds, getPostData } from "@/lib/posts"
 import Date from "@/components/date"
-import Head from "next/head"
+import utilStyles from "@/styles/utils.module.css"
+
 type Params = {
   id: string
 }
@@ -31,31 +33,31 @@ export default async function Post({ params }: Props) {
   const postData: PostData = await getPostData(params.id)
 
   return (
-    <div className="container mx-auto px-4">
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
-      <div className="flex flex-col">
-        {/* Post Title */}
-        <h1 className="font-extrabold text-3xl mb-1 flex justify-center">
-          {postData.title}
-        </h1>
+    <>
+      <div className="flex justify-center">
+        <Head>
+          <title>{postData.title}</title>
+        </Head>
+        <div className="flex flex-col">
+          {/* Post Title */}
 
-        <div className="flex justify-center text-gray-700 dark:text-slate-300 font-medium mb-5 gap-2">
-          <div className="author">By {postData.author}</div>
-          <div className="dot">•</div>
-          <Date dateString={postData.date} />
-        </div>
+          <article className="w-full max-w-lg pb-10 lg:px-0 px-8">
+            <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+            <div className={" text-sm flex justify-start items-center gap-x-2"}>
+              <Date dateString={postData.date} />• {postData.author}
+            </div>
+            <hr className="py-2 opacity-0" />
+            <div
+              className={"prose prose-sm w-full text-left dark:prose-invert"}
+              dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+            />
+          </article>
 
-        {/* Post Content */}
-        <div
-          className="text-gray-600 dark:text-gray-300"
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-        />
-        <div className="">
-          <Link href="/Blog">← Back to blog</Link>
+          <div className="pb-20 -mt-4 font-medium dark:text-blue-400 text-blue-600 hover:underline">
+            <Link href="/Blog">← Back to Blogs</Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
