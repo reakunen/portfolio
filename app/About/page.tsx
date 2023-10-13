@@ -18,7 +18,7 @@ export default function Page() {
           About Me
         </h1>
         <img
-          src="https://media.discordapp.net/attachments/902700750419947602/1162497763657916487/IMG_5360.jpg?ex=653c2769&is=6529b269&hm=5592364d3dcca799ec2d5e6991d9cbaca3289f1b58f69159204d84907944a709&=&width=919&height=1225"
+          // src="https://media.discordapp.net/attachments/902700750419947602/1162497763657916487/IMG_5360.jpg?ex=653c2769&is=6529b269&hm=5592364d3dcca799ec2d5e6991d9cbaca3289f1b58f69159204d84907944a709&=&width=919&height=1225"
           alt="Brian Mai"
           height="275"
           width="275"
@@ -28,7 +28,7 @@ export default function Page() {
           <div className="prose prose-p:text-[16px] prose-ul:text-[15px] w-full text-left dark:prose-invert">
             <p className="leading-loose">
               My name is <span className="font-bold">Brian</span>! I am looking
-              for Software Engineering Intern positions so please don't
+              for Software Engineering Intern positions so please don&apos;t
               hesistate to reach out to me or connect just for a chat! I am
               passionate about computer science, and am planning to concentrate
               in Machine Learning and AI here at Cal Poly SLO. On my free time I
@@ -50,11 +50,11 @@ export default function Page() {
                 <li>
                   I love cooking Spam Musubi, check out my{" "}
                   <Link href="/Blog" className="underline">
-                    food blog posts!
+                    cooking blog posts!
                   </Link>
                 </li>
                 <li>I like to hit chest and bench press at the gym</li>
-                <li>I'm currently watching Jujutsu Kaisen Season 2</li>
+                <li>I am currently watching Jujutsu Kaisen Season 2</li>
               </ul>
             </section>
           </div>

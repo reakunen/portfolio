@@ -1,6 +1,6 @@
 # Brian Mai's Full Stack Portfolio Website (Fall 2023)
 
-Welcome to my portfolio website! This website showcases my skills, projects, and experiences as a Full Stack Developer. Feel free to explore and get to know me better. Visit the site at [https://www.brianmai.org/]
+Welcome to my portfolio website! This website showcases my skills, projects, and experiences as a Full Stack Developer. Feel free to explore and get to know me better. Visit the site at [https://brianmai.vercel.app/]
 
 ## Technologies Used
 
