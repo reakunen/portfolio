@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
@@ -17,11 +18,11 @@ export default function Page() {
         <h1 className="invisible text-1xl font-bold flex flex-col w-full lg:mb-8 text-center lg:-mt-2 pt-0">
           About Me
         </h1>
-        <img
-          src="https://media.discordapp.net/attachments/902700750419947602/1162497763657916487/IMG_5360.jpg?ex=653c2769&is=6529b269&hm=5592364d3dcca799ec2d5e6991d9cbaca3289f1b58f69159204d84907944a709&=&width=919&height=1225"
+        <Image
+          src="/images/group-pic.png"
           alt="Brian Mai"
-          height="275"
-          width="275"
+          height={275}
+          width={275}
           className="text-center mx-auto transform rounded-lg lg:hidden mb-4 lg:mb-0 text-loose"
         />
         <div className="grid lg:grid-cols-2 grid-cols-1 lg:max-w-6xl md:max-w-2xl items-start max-w-lg pb-24">
@@ -30,11 +31,9 @@ export default function Page() {
               My name is <span className="font-bold">Brian</span>! I am looking
               for Software Engineering Intern positions so please don&apos;t
               hesistate to reach out to me or connect just for a chat! I am
-              passionate about computer science, and am planning to concentrate
-              in Machine Learning and AI here at Cal Poly SLO. On my free time I
-              love to develop web applications using{" "}
+              passionate about computer science. My framework of choice is{" "}
               <a href="https://nextjs.org/" className="underline">
-                NextJS 13
+                NextJS 14
               </a>
               !
             </p>
@@ -45,16 +44,16 @@ export default function Page() {
                 <li>
                   My favorite piece to play is Arabesque No.1 by Claude Debussy
                 </li>
-                <li>I am Town-Hall 14 in Clash of Clans</li>
+                {/* <li>I am Town-Hall 14 in Clash of Clans</li> */}
                 <li>Favorite artists: Laufey, Beabadoobee, Yoasobi, Aminé</li>
                 <li>
                   I love cooking Spam Musubi, check out my{" "}
-                  <Link href="/Blog" className="underline">
+                  <Link href="/blog" className="underline">
                     cooking blog posts!
                   </Link>
                 </li>
-                <li>I like to hit chest and bench press at the gym</li>
-                <li>I am currently watching Jujutsu Kaisen Season 2</li>
+                {/* <li>I like to hit chest and bench press at the gym</li> */}
+                <li>My favorite TV show is Teen Titans Go </li>
               </ul>
             </section>
           </div>
@@ -67,11 +66,11 @@ export default function Page() {
             whileTap={{ scale: 1.0 }}
             transition={{ type: "spring", stiffness: 300, damping: 10 }}
           >
-            <img
-              src="https://media.discordapp.net/attachments/902700750419947602/1162497763657916487/IMG_5360.jpg?ex=653c2769&is=6529b269&hm=5592364d3dcca799ec2d5e6991d9cbaca3289f1b58f69159204d84907944a709&=&width=919&height=1225"
+            <Image
+              src="/images/group-pic.png"
               alt="Brian Mai"
-              height="400"
-              width="400"
+              height={400}
+              width={400}
               className="text-center mx-auto transform rounded-lg hidden lg:block"
             />
           </motion.div>

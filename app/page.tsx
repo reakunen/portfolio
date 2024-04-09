@@ -27,10 +27,10 @@ export default function Page() {
         <div className="flex flex-col items-center gap-3">
           <Image
             className="rounded-full"
-            src="https://media.discordapp.net/attachments/902700750419947602/1162496954685718558/1694169158124.png?ex=653c26a8&is=6529b1a8&hm=16f2d3ac7799b0903b4708b37a0d5a547ecefbd2ee6f13bb8381fe746df8c53a&=&width=1227&height=1227"
-            alt=""
-            width={170}
-            height={170}
+            src="/images/brianmai.jpg"
+            alt="Brian Mai"
+            width={168}
+            height={168}
           />
           <h1 className="relative w-[max-content] font-mono font-bold text-4xl before:absolute before:inset-0 before:animate-typewriter dark:before:bg-goodboy before:bg-white after:absolute after:inset-0 after:w-[0.125em] after:animate-caret after:bg-black dark:after:bg-white">
             Brian Mai.

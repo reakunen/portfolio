@@ -27,17 +27,17 @@ export function Footer() {
         title={"Home"}
       />
       <NavItem
-        href="/About  "
+        href="/about"
         icon={<UserIcon className="h-5 w-5 text-gray-400" />}
         title={"About"}
       />
       <NavItem
-        href="/Guestbook"
+        href="/guestbook"
         icon={<BookOpenCheckIcon className="h-5 w-5 text-gray-400" />}
         title={"Guestbook"}
       />
       <NavItem
-        href="/Blog"
+        href="/blog"
         icon={<PencilIcon className="h-5 w-5 text-gray-400" />}
         title={"Blog"}
       />
@@ -55,7 +55,7 @@ export function Footer() {
         title={"Projects"}
       /> */}
       <NavItem
-        href="/Projects"
+        href="/projects"
         icon={<FolderOpenIcon className="h-5 w-5 text-gray-400" />}
         title={"Projects"}
       />
