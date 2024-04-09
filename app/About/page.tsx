@@ -48,7 +48,7 @@ export default function Page() {
                 <li>Favorite artists: Laufey, Beabadoobee, Yoasobi, Aminé</li>
                 <li>
                   I love cooking Spam Musubi, check out my{" "}
-                  <Link href="/blog" className="underline">
+                  <Link href="/Blog" className="underline">
                     cooking blog posts!
                   </Link>
                 </li>
