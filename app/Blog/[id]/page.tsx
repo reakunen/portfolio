@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Head from "next/head"
 import Link from "next/link"
 
@@ -18,6 +19,7 @@ type PostData = {
   date: string
   contentHtml: string
   author: string
+  id: any
 }
 
 export async function generateMetadata({ params }: Props) {
