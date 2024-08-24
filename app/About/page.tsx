@@ -28,24 +28,22 @@ export default function Page() {
         <div className="grid lg:grid-cols-2 grid-cols-1 lg:max-w-6xl md:max-w-2xl items-start max-w-lg pb-24">
           <div className="prose prose-p:text-[16px] prose-ul:text-[15px] w-full text-left dark:prose-invert">
             <p className="leading-loose">
-              My name is <span className="font-bold">Brian</span>! I am looking
-              for Software Engineering Intern positions so please don&apos;t
-              hesistate to reach out to me or connect just for a chat! I am
-              passionate about computer science. My framework of choice is{" "}
+              My name is <span className="font-bold">Brian</span>! I like to beekeep and play the piano; please let me know what else hobbies I should take on. I am
+              passionate about web development love to solve complex problems. My framework of choice is{" "}
               <a href="https://nextjs.org/" className="underline">
                 NextJS 14
               </a>
               !
             </p>
             <section className="mt-10">
-              <p className="flex text-lg font-bold mb-2">Fun Facts:</p>
+              <p className="flex text-lg font-bold mb-2">Stuff About Me:</p>
               <ul className="ml-6 list-disc list-inside g">
                 <li>I have been playing the piano for over 10 years now!</li>
                 <li>
                   My favorite piece to play is Arabesque No.1 by Claude Debussy
                 </li>
                 {/* <li>I am Town-Hall 14 in Clash of Clans</li> */}
-                <li>Favorite artists: Laufey, Beabadoobee, Yoasobi, Aminé</li>
+                <li>I like to listen to classical pieces when I walk to class</li>
                 <li>
                   I love cooking Spam Musubi, check out my{" "}
                   <Link href="/Blog" className="underline">
@@ -53,7 +51,7 @@ export default function Page() {
                   </Link>
                 </li>
                 {/* <li>I like to hit chest and bench press at the gym</li> */}
-                <li>My favorite TV show is Teen Titans Go </li>
+                <li>I like to beekeep and if there was no beekeeping in this world, I would not be here.</li>
               </ul>
             </section>
           </div>
